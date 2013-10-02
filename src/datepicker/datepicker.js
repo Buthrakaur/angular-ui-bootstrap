@@ -307,11 +307,11 @@ function ($compile, $parse, $document, $position, dateFilter, datepickerPopupCon
 
       // popup element used to display calendar
       var popupEl = angular.element('<datepicker-popup-wrap><datepicker></datepicker></datepicker-popup-wrap>');
-      popupEl.attr({
-        'ng-model': 'date',
-        'ng-change': 'dateSelection()'
-      });
       var datepickerEl = popupEl.find('datepicker');
+      datepickerEl.attr({
+          'ng-model': '$parent.$parent.date',
+          'ng-change': '$parent.$parent.dateSelection()'
+      });     
       if (attrs.datepickerOptions) {
         datepickerEl.attr(angular.extend({}, originalScope.$eval(attrs.datepickerOptions)));
       }
